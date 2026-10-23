@@ -12,6 +12,7 @@ import { useToast } from '../components/ToastManager';
 
 const statusColors = (C) => ({
   synced: C.success,
+  pending: C.gold,
   pending_sync: C.gold,
   error: C.danger,
 });

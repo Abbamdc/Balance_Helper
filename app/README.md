@@ -6,11 +6,27 @@ Expo + React Native mobile app for iOS & Android.
 
 ## Prerequisites
 
-- Node.js 18+
-- Expo CLI: `npm install -g expo-cli`
+- Node.js 20.19+ (22 LTS recommended)
+- No global Expo CLI needed — use `npx expo`
 - EAS CLI (for builds): `npm install -g eas-cli`
 - Expo Go app on your phone (for dev testing)
 - The backend server running (see `server/README.md`)
+
+---
+
+## Expo SDK version
+
+This project targets **Expo SDK 57** (React Native 0.86, React 19.2), which matches the
+current App Store / Google Play version of Expo Go.
+
+If Expo Go says the project is incompatible, it shows which SDK it supports. Match it with:
+
+```bash
+npx expo install expo@^<SDK>.0.0 --fix     # e.g. expo@^58.0.0
+```
+
+SDK 58 was released on Oct 21, 2026 and reaches the stores over the following weeks.
+Production apps should use a development build (`eas build --profile development`) instead of Expo Go.
 
 ---
 

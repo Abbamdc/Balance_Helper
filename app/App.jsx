@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -22,11 +22,10 @@ import { View, ActivityIndicator } from 'react-native';
 // ── Inner app — waits for fonts + auth boot ───────────────────
 function AppInner() {
   const { theme } = useAuth();
-  const bg = theme === 'dark' ? '#0a0e1a' : '#f0f4fa';
 
   return (
     <>
-      <StatusBar style={theme === 'dark' ? 'light' : 'dark'} backgroundColor={bg} />
+      <StatusBar style={theme === 'dark' ? 'light' : 'dark'} />
       <RecordsProvider>
         <RootNavigator />
       </RecordsProvider>

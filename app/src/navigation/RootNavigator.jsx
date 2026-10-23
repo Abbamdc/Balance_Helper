@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Text, ActivityIndicator, View } from 'react-native';
@@ -36,8 +36,9 @@ const HomeStack = () => (
 );
 
 // ── Main Tab Navigator ────────────────────────────────────────
-const MainTabs = ({ theme }) => {
-  const colors = getTheme(theme);
+const MainTabs = () => {
+  const { theme } = useAuth();
+  const colors = getTheme(theme === 'dark');
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -82,7 +83,7 @@ const AuthStack = () => (
 // ── Root Navigator ────────────────────────────────────────────
 export default function RootNavigator() {
   const { isAuthenticated, isLoading, theme } = useAuth();
-  const colors = getTheme(theme);
+  const colors = getTheme(theme === 'dark');
 
   if (isLoading) {
     return (
@@ -94,12 +95,16 @@ export default function RootNavigator() {
   }
 
   return (
-    <NavigationContainer>
+    <NavigationContainer
+      theme={{
+        ...DefaultTheme,
+        dark: theme === 'dark',
+        colors: { ...DefaultTheme.colors, background: colors.bg, card: colors.panel, border: colors.border },
+      }}
+    >
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         {isAuthenticated ? (
-          <Stack.Screen name="Main">
-            {() => <MainTabs theme={theme} />}
-          </Stack.Screen>
+          <Stack.Screen name="Main" component={MainTabs} />
         ) : (
           <Stack.Screen name="Auth" component={AuthStack} />
         )}
