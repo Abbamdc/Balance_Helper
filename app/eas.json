@@ -16,13 +16,13 @@
         "buildType": "apk"
       },
       "env": {
-        "EXPO_PUBLIC_API_URL": "https://YOUR-STAGING-API.onrender.com/api"
+        "EXPO_PUBLIC_API_URL": "https://balance-helper-server.onrender.com"
       }
     },
     "production": {
       "autoIncrement": true,
       "env": {
-        "EXPO_PUBLIC_API_URL": "https://YOUR-PRODUCTION-API.onrender.com/api"
+        "EXPO_PUBLIC_API_URL": "https://balance-helper-server.onrender.com"
       }
     }
   },
