@@ -31,7 +31,10 @@
       "@react-native-community/datetimepicker"
     ],
     "extra": {
-      "apiUrl": "http://localhost:5000/api"
+      "apiUrl": "http://localhost:5000/api",
+      "eas": {
+        "projectId": "7bcc5574-ddb5-4607-9a8d-1d4906e26278"
+      }
     }
   }
 }
